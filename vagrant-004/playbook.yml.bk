@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+  remote_user: vagrant
+  become: true
+  tasks:
+    - name: Instala Apache2
+      apt: name=apache2 state=present update_cache=true
+      notify:
+        - "Reinicia el servidor Web"
+  handlers:
+    - name: Reinicia el servidor Web
+      service: name=apache2 state=restarted

@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+    - name: Instalando GIT
+      apt:
+        name: git
+        state: latest
+        update_cache: true
+    - name: Instalando herramientas para la pagina Web
+      apt:
+        name: postgresql
+        state: latest
